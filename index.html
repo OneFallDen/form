@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>
+        Form
+    </title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/suggestions-jquery@21.12.0/dist/css/suggestions.min.css" rel="stylesheet" /><!--Отвечает за автодополнение-->
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=6e171e59-7938-49e7-9b41-954cb8d773b4" type="text/javascript"></script><!--Карта-->
+    <script src="https://yandex.st/jquery/2.2.3/jquery.min.js" type="text/javascript"></script><!--Карта-->
+</head>
+
+<body>
+    <div class="form">
+        <form method="post" id="main-form" class="form_body">
+
+            <div class="input_data">
+                <label for="name" class="name_data">Имя:</label>
+                <input class="text_areas" id="name" name="name" type="text" placeholder="Введите имя" maxlength="25">
+            </div>
+            <div class="input_data">
+                <label for="inputPhone" class="name_data">Телефон: *</label>
+                <input class="text_areas req" id="inputPhone" name="inputPhone" type="tel" placeholder="+7(___)___-__-__" maxlength="25">
+            </div>
+            <div class="input_data">
+                <label for="address" class="name_data">Адрес: *</label>
+                <input class="text_areas req" id="address" name="address" type="address" placeholder="Введите адрес">
+            </div>
+            <div class="input_data" id="map_data">
+                <div class="map-cont" name=" map-cont" >
+                    <label for="map-cont" class="name_data">На карте: *</label>
+                    <input class="text_areas" type="button" value="Показать карту" id="toggle"/><input class="text_areas req" id="addressMap" name="addressMap" placeholder="Выберите адрес на карте" readonly>
+                </div>
+            </div>
+            <div id="map"></div>
+            <div id="error" style="display: none">Заполните все обязательные поля</div>
+            <input id="button" name="submit" type="submit" value="Отправить" style="width: 190px;">
+        </form>
+    </div>
+
+    <div class="popup" id="popup">
+        <div class="popup_body">
+            <div class="popup_content">
+                <div id="popup_title"></div>
+                <button class="close_popup">Закрыть</button>
+            </div>
+        </div>
+    </div>
+  
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script><!--Отвечает за автодополнение-->
+    <script src="https://cdn.jsdelivr.net/npm/suggestions-jquery@21.12.0/dist/js/jquery.suggestions.min.js"></script><!--Отвечает за автодополнение-->
+    <script>
+        $("#address").suggestions({
+            token: "792a24950e97bdbf4e1c7420ed7c5001bc7764ef",
+            type: "ADDRESS",
+            /* Вызывается, когда пользователь выбирает одну из подсказок */
+            onSelect: function(suggestion) {
+                console.log(suggestion);
+            }
+        });
+    </script><!--Отвечает за автодополнение-->
+    <script src="script/main.js"></script>
+    <script src="script/map.js"></script>
+
+</body>
+
